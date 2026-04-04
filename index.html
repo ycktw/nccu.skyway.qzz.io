@@ -202,7 +202,7 @@
 				</div>
 		</v-overlay>
 
-		<v-dialog v-model="isModalOpen" max-width="600">
+		<v-dialog v-model="isModalOpen" max-width="600" @click:outside="closeModal">
 			<v-card v-if="selectedBook">
 					<v-card-title class="headline primary white--text pb-4">
 							<v-icon dark left>mdi-book-open-page-variant</v-icon>
