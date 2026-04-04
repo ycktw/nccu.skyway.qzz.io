@@ -40,6 +40,7 @@ const adminMixin = {
       editBookDialog: false,
       editBookLoading: false,
       editBookForm: { tno: '', book_name: '', author: '', price: '', lend: '1' },
+    editFreezeForm: { st_no: '', note: '' },
       
       // ================= 工讀生 / 管理員帳號管理 =================
       adminManageDialog: false,
@@ -731,6 +732,14 @@ const adminMixin = {
         this.page = 1;
         this.loadAllBooks();
     },
+    openDetailEditDialog() {
+        if (this.currentTableMode === 'blacklist') {
+            this.openEditFreezeDialog();
+            return;
+        }
+
+        this.openEditBookDialog();
+    },
     openEditBookDialog() {
         if (!this.selectedBook) return;
         
@@ -748,7 +757,60 @@ const adminMixin = {
         };
         this.editBookDialog = true;
     },
+    openEditFreezeDialog() {
+        if (!this.selectedBook) return;
+
+        this.editFreezeForm = {
+            st_no: this.selectedBook.st_no || this.selectedBook.stid || '',
+            note: this.selectedBook.note || this.selectedBook.remarks || ''
+        };
+        this.editBookDialog = true;
+    },
     submitEditBook() {
+        if (this.currentTableMode === 'blacklist') {
+            if (!this.editFreezeForm.st_no) {
+                alert(this.$t('alerts.enterStudentId'));
+                return;
+            }
+
+            this.editBookLoading = true;
+            const request = {
+                action: 'update_freeze_note',
+                payload: {
+                    stid: this.editFreezeForm.st_no,
+                    st_no: this.editFreezeForm.st_no,
+                    note: this.editFreezeForm.note || ''
+                }
+            };
+
+            this.requests.set('update_freeze_note', (res) => {
+                this.editBookLoading = false;
+                if (res.success) {
+                    alert(res.message);
+                    this.editBookDialog = false;
+
+                    this.$set(this.selectedBook, 'note', this.editFreezeForm.note || '');
+                    this.$set(this.selectedBook, 'remarks', this.editFreezeForm.note || '');
+                    const targetStNo = this.editFreezeForm.st_no;
+                    this.books = (this.books || []).map((item) => {
+                        if ((item.st_no || item.stid) === targetStNo) {
+                            return {
+                                ...item,
+                                note: this.editFreezeForm.note || '',
+                                remarks: this.editFreezeForm.note || ''
+                            };
+                        }
+                        return item;
+                    });
+                } else {
+                    alert(res.message || this.$t('alerts.saveFailed'));
+                }
+            });
+
+            this.ws.send(JSON.stringify(request));
+            return;
+        }
+
         if (!this.editBookForm.tno || !this.editBookForm.book_name) {
             alert(this.$t('alerts.newBookRequired'));
             return;

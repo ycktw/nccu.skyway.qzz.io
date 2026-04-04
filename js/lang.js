@@ -183,6 +183,7 @@ const messages = {
         },
 				editBook: {
             title: '編輯書籍資料',
+                blacklistTitle: '編輯禁借備註',
             lendableShort: '可外借 (1)',
             notLendableShort: '不外借 (0)',
             save: '儲存變更'
@@ -371,6 +372,7 @@ const messages = {
         },
 				editBook: {
             title: 'Edit Book Data',
+                blacklistTitle: 'Edit Blacklist Note',
             lendableShort: 'Lendable (1)',
             notLendableShort: 'Not Lendable (0)',
             save: 'Save Changes'
@@ -559,6 +561,7 @@ const messages = {
         },
 				editBook: {
             title: '書籍データの編集',
+                blacklistTitle: '利用禁止メモを編集',
             lendableShort: '貸出可 (1)',
             notLendableShort: '貸出不可 (0)',
             save: '変更を保存'
