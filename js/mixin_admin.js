@@ -663,6 +663,11 @@ const adminMixin = {
         this.studentFormVisible = false;
         this.$nextTick(() => { this.fetchStudent(); });
     },
+    openBorrowHistoryWithId(st_no) {
+        this.closeModal();
+        this.borrowHistoryStId = st_no;
+        this.$nextTick(() => { this.fetchBorrowHistory(); });
+    },
     fetchStudent() {
         if (!this.studentSearchId.trim()) return;
         this.studentLoading = true;

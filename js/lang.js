@@ -128,7 +128,8 @@ const messages = {
             identityType2: '研究所',
             identityType3: '教職員',
             identityTypeUnknown: '未知分類',
-            openProfile: '開啟借書人帳號'
+            openProfile: '開啟借書人帳號',
+            openBorrowHistory: '查詢此學號的借閱歷史'
         },
         adminManage: {
             title: '工讀生帳號管理',
@@ -317,7 +318,8 @@ const messages = {
             identityType2: 'Graduate',
             identityType3: 'Faculty & Staff',
             identityTypeUnknown: 'Unknown category',
-            openProfile: 'Open Student Profile'
+            openProfile: 'Open Student Profile',
+            openBorrowHistory: 'Look Up Borrow History'
         },
         adminManage: {
             title: 'Staff Account Management',
@@ -506,7 +508,8 @@ const messages = {
             identityType2: '大学院',
             identityType3: '教職員',
             identityTypeUnknown: '不明な分類',
-            openProfile: '借主アカウントを開く'
+            openProfile: '借主アカウントを開く',
+            openBorrowHistory: '借出履歴を検索'
         },
         adminManage: {
             title: 'スタッフアカウント管理',

@@ -224,6 +224,7 @@
 															>
 																	<span>{{ value }}</span>
 																	<v-btn v-if="key === 'st_no' && Number(loggedInLevel) > 1" icon x-small class="ml-1" :title="$t('studentManage.openProfile')" @click.stop="openStudentManageWithId(value)"><v-icon x-small>mdi-account-edit</v-icon></v-btn>
+											<v-btn v-if="key === 'st_no' && Number(loggedInLevel) > 1" icon x-small class="ml-1" :title="$t('studentManage.openBorrowHistory')" @click.stop="openBorrowHistoryWithId(value)"><v-icon x-small>mdi-history</v-icon></v-btn>
 															</v-col>
 													</v-row>
 											</v-list-item-content>
