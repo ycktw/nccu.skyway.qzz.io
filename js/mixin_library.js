@@ -266,9 +266,9 @@ const libraryMixin = {
     },
 		formatKey(key) {
         // 幫即時狀態欄位加上明確的中文標題，避免顯示英文 key
-        if (key === 'real_lendable') return '可否外借 (即時)';
-        if (key === 'real_status') return '目前借閱狀態';
-        if (key === 'expected_return') return '預計歸還時間';
+        if (key === 'real_lendable') return this.$t('lend_privilege');
+        if (key === 'real_status') return this.$t('fields.real_status');
+        if (key === 'expected_return') return this.$t('fields.expected_return');
 
         return this.$t(`fields.${key}`) || key;
     },
@@ -303,7 +303,7 @@ const libraryMixin = {
     // ==========================================
 		async subscribeToNotification(tno) {
         if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-            alert('您的瀏覽器不支援推播通知功能');
+            alert(this.$t('alerts.pushUnsupported'));
             return;
         }
 
@@ -312,7 +312,7 @@ const libraryMixin = {
             if (Notification.permission !== 'granted') {
                 const permission = await Notification.requestPermission();
                 if (permission !== 'granted') {
-                    alert('需要開啟通知權限才能接收歸還通知');
+                    alert(this.$t('alerts.pushPermissionRequired'));
                     return;
                 }
             }
@@ -361,13 +361,13 @@ const libraryMixin = {
             });
 
             if (response.ok) {
-                alert('訂閱成功！當書籍歸還時，您將會收到瀏覽器通知。');
+                alert(this.$t('alerts.pushSubscribeSuccess'));
             } else {
-                alert('訂閱請求失敗，請稍後再試。');
+                alert(this.$t('alerts.pushSubscribeFailed'));
             }
         } catch (error) {
             console.error('訂閱過程發生錯誤:', error);
-            alert('發生錯誤，無法完成訂閱。');
+            alert(this.$t('alerts.pushUnexpectedError'));
         }
     },
 

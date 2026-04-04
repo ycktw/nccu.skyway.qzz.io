@@ -792,8 +792,8 @@ const adminMixin = {
         this.ws.send(JSON.stringify(request));
     },
     saveAdmin() {
-        if (!this.adminForm.id || !this.adminForm.nickname) { alert('帳號與暱稱為必填欄位'); return; }
-        if (this.adminIsNew && !this.adminForm.password) { alert('新增帳號時必須設定密碼'); return; }
+        if (!this.adminForm.id || !this.adminForm.nickname) { alert(this.$t('alerts.adminRequiredFields')); return; }
+        if (this.adminIsNew && !this.adminForm.password) { alert(this.$t('alerts.adminPasswordRequired')); return; }
 
         this.adminLoading = true;
         

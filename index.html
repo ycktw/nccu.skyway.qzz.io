@@ -69,52 +69,52 @@
 								<template v-slot:activator="{ on, attrs }">
 										<v-btn text v-bind="attrs" v-on="on" class="mr-2">
 												<v-icon left>mdi-view-dashboard</v-icon>
-												{{ $t('adminMenu') || '管理選單' }}
+														{{ $t('adminMenu') }}
 												<v-icon right>mdi-menu-down</v-icon>
 										</v-btn>
 								</template>
 								<v-list dense>
 										<v-list-item link @click.stop="openBorrowDialog">
 												<v-list-item-icon class="mr-3"><v-icon>mdi-book-plus</v-icon></v-list-item-icon>
-												<v-list-item-content><v-list-item-title>{{ $t('menu.borrowRegistration') || '借書登記' }}</v-list-item-title></v-list-item-content>
+												<v-list-item-content><v-list-item-title>{{ $t('menu.borrowRegistration') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 										<v-list-item link @click.stop="openReturnDialog">
 												<v-list-item-icon class="mr-3"><v-icon>mdi-book-minus</v-icon></v-list-item-icon>
-												<v-list-item-content><v-list-item-title>{{ $t('menu.returnRegistration') || '還書登記' }}</v-list-item-title></v-list-item-content>
+												<v-list-item-content><v-list-item-title>{{ $t('menu.returnRegistration') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 										<v-list-item link @click.stop="openNewBookDialog">
 												<v-list-item-icon class="mr-3"><v-icon>mdi-book-plus-multiple</v-icon></v-list-item-icon>
-												<v-list-item-content><v-list-item-title>{{ $t('menu.newBook') || '新書入庫' }}</v-list-item-title></v-list-item-content>
+												<v-list-item-content><v-list-item-title>{{ $t('menu.newBook') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 
 										<v-list-item link @click.stop="fetchUnreturnedStats">
 												<v-list-item-icon class="mr-3"><v-icon>mdi-chart-bar</v-icon></v-list-item-icon>
-												<v-list-item-content><v-list-item-title>{{ $t('menu.unreturnedStats') || '未還統計' }}</v-list-item-title></v-list-item-content>
+												<v-list-item-content><v-list-item-title>{{ $t('menu.unreturnedStats') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 
 										<v-list-item link @click.stop="fetchBlacklist">
 												<v-list-item-icon class="mr-3"><v-icon>mdi-account-cancel</v-icon></v-list-item-icon>
-												<v-list-item-content><v-list-item-title>{{ $t('menu.blacklist') || '黑名單管理' }}</v-list-item-title></v-list-item-content>
+												<v-list-item-content><v-list-item-title>{{ $t('menu.blacklist') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 										<v-list-item link @click.stop="openCollectionList">
 											<v-list-item-icon class="mr-3"><v-icon>mdi-format-list-bulleted</v-icon></v-list-item-icon>
-											<v-list-item-content><v-list-item-title>{{ $t('menu.collectionList') || '館藏清單' }}</v-list-item-title></v-list-item-content>
+											<v-list-item-content><v-list-item-title>{{ $t('menu.collectionList') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 										<v-list-item v-if="loggedInLevel >= 2" link @click.stop="openOpendayDialog">
 											<v-list-item-icon class="mr-3"><v-icon>mdi-calendar-edit</v-icon></v-list-item-icon>
-											<v-list-item-content><v-list-item-title>{{ $t('menu.openingDays') || '開館日設定' }}</v-list-item-title></v-list-item-content>
+											<v-list-item-content><v-list-item-title>{{ $t('menu.openingDays') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 										<v-list-item link @click.stop="openBorrowHistoryDialog">
 											<v-list-item-icon class="mr-3"><v-icon>mdi-history</v-icon></v-list-item-icon>
-											<v-list-item-content><v-list-item-title>{{ $t('menu.borrowHistory') || '借閱歷史紀錄' }}</v-list-item-title></v-list-item-content>
+											<v-list-item-content><v-list-item-title>{{ $t('menu.borrowHistory') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 										<v-list-item v-if="loggedInLevel >= 1" link @click.stop="openStudentManageDialog">
 											<v-list-item-icon class="mr-3"><v-icon>mdi-account-cog</v-icon></v-list-item-icon>
-											<v-list-item-content><v-list-item-title>{{ $t('menu.studentManage') || '借書人帳號管理' }}</v-list-item-title></v-list-item-content>
+											<v-list-item-content><v-list-item-title>{{ $t('menu.studentManage') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 										<v-list-item v-if="loggedInLevel >= 2" link @click.stop="openAdminManageDialog">
 											<v-list-item-icon class="mr-3"><v-icon>mdi-account-supervisor</v-icon></v-list-item-icon>
-											<v-list-item-content><v-list-item-title>{{ $t('menu.adminManage') || '工讀生帳號管理' }}</v-list-item-title></v-list-item-content>
+											<v-list-item-content><v-list-item-title>{{ $t('menu.adminManage') }}</v-list-item-title></v-list-item-content>
 										</v-list-item>
 								</v-list>
 						</v-menu>
@@ -237,7 +237,7 @@
 															@click="subscribeToNotification(selectedBook.tno)"
 													>
 															<v-icon left>mdi-bell-ring</v-icon>
-															書籍歸還時通知我
+															{{ $t('notifications.notifyOnReturn') }}
 													</v-btn>
 											</v-list-item-content>
 									</v-list-item>
@@ -258,8 +258,8 @@
 				<v-card>
 						<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('sysAdmin') }}</v-card-title>
 						<v-card-text class="pt-6">
-								<v-text-field v-model="loginForm.username" label="Username" prepend-icon="mdi-account" outlined dense></v-text-field>
-								<v-text-field v-model="loginForm.password" label="Password" type="password" prepend-icon="mdi-lock" outlined dense @keyup.enter="submitLogin"></v-text-field>
+								<v-text-field v-model="loginForm.username" :label="$t('auth.username')" prepend-icon="mdi-account" outlined dense></v-text-field>
+								<v-text-field v-model="loginForm.password" :label="$t('auth.password')" type="password" prepend-icon="mdi-lock" outlined dense @keyup.enter="submitLogin"></v-text-field>
 						</v-card-text>
 						<v-card-actions class="pb-4 px-4">
 								<v-spacer></v-spacer>
@@ -325,88 +325,88 @@
 
 		<v-dialog v-model="borrowDialog" max-width="500" persistent>
 				<v-card>
-						<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.borrowRegistration') || '借書登記' }}</v-card-title>
+						<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.borrowRegistration') }}</v-card-title>
 						<v-card-text class="pt-6">
 								<v-alert :value="borrowAlert.show" :type="borrowAlert.type" dense text transition="scale-transition">
 										{{ borrowAlert.message }}
 								</v-alert>
 			<v-form @submit.prevent="submitBorrow">
-										<v-text-field v-model="borrowForm.tno" :label="$t('fields.tno') || '索書號'" prepend-icon="mdi-pound" outlined dense ref="borrowTnoField"></v-text-field>
-										<v-text-field v-model="borrowForm.stid" :label="$t('borrowerId') || '借書人學號'" prepend-icon="mdi-account" outlined dense @keyup.enter="submitBorrow"></v-text-field>
+										<v-text-field v-model="borrowForm.tno" :label="$t('fields.tno')" prepend-icon="mdi-pound" outlined dense ref="borrowTnoField"></v-text-field>
+										<v-text-field v-model="borrowForm.stid" :label="$t('borrowerId')" prepend-icon="mdi-account" outlined dense @keyup.enter="submitBorrow"></v-text-field>
 								</v-form>
 						</v-card-text>
 						<v-card-actions class="pb-4 px-4">
 								<v-spacer></v-spacer>
 								<v-btn text color="grey darken-1" @click="closeBorrowDialog">{{ $t('close') }}</v-btn>
-								<v-btn color="primary" :loading="borrowLoading" @click="submitBorrow">{{ $t('submit') || '送出' }}</v-btn>
+								<v-btn color="primary" :loading="borrowLoading" @click="submitBorrow">{{ $t('submit') }}</v-btn>
 						</v-card-actions>
 				</v-card>
 		</v-dialog>
 
 		<v-dialog v-model="returnDialog" max-width="500" persistent>
 				<v-card>
-						<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.returnRegistration') || '還書登記' }}</v-card-title>
+						<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.returnRegistration') }}</v-card-title>
 						<v-card-text class="pt-6">
 								<v-alert :value="returnAlert.show" :type="returnAlert.type" dense text transition="scale-transition">
 										{{ returnAlert.message }}
 								</v-alert>
 								<v-form @submit.prevent="submitReturn">
-										<v-text-field v-model="returnForm.tno" :label="$t('fields.tno') || '索書號'" prepend-icon="mdi-pound" outlined dense ref="returnTnoField"></v-text-field>
-										<v-text-field v-model="returnForm.stid" :label="$t('borrowerId') || '借書人學號'" prepend-icon="mdi-account" outlined dense @keyup.enter="submitReturn"></v-text-field>
+										<v-text-field v-model="returnForm.tno" :label="$t('fields.tno')" prepend-icon="mdi-pound" outlined dense ref="returnTnoField"></v-text-field>
+										<v-text-field v-model="returnForm.stid" :label="$t('borrowerId')" prepend-icon="mdi-account" outlined dense @keyup.enter="submitReturn"></v-text-field>
 								</v-form>
 						</v-card-text>
 						<v-card-actions class="pb-4 px-4">
 								<v-spacer></v-spacer>
 								<v-btn text color="grey darken-1" @click="closeReturnDialog">{{ $t('close') }}</v-btn>
-								<v-btn color="primary" :loading="returnLoading" @click="submitReturn">{{ $t('submit') || '送出' }}</v-btn>
+								<v-btn color="primary" :loading="returnLoading" @click="submitReturn">{{ $t('submit') }}</v-btn>
 						</v-card-actions>
 				</v-card>
 		</v-dialog>
 
 		<v-dialog v-model="newBookDialog" max-width="800" persistent>
 				<v-card>
-						<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.newBook') || '新書入庫' }}</v-card-title>
+						<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.newBook') }}</v-card-title>
 						<v-card-text class="pt-6">
 								<v-alert :value="newBookAlert.show" :type="newBookAlert.type" dense text transition="scale-transition">
 										{{ newBookAlert.message }}
 								</v-alert>
 								<v-form @submit.prevent="submitNewBook">
 										<v-row dense>
-												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.tno" :label="($t('fields.tno') || '索書號') + ' *'" ref="newBookTnoField" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.book_name" :label="($t('fields.book_name') || '書名') + ' *'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.author" :label="$t('fields.author') || '作者'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.cat" :label="$t('fields.cat') || '分類號'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.aumark" :label="$t('fields.aumark') || '作者號'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.publish" :label="$t('fields.publish') || '出版社'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.publish_place" :label="$t('fields.publish_place') || '出版地'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.year" :label="$t('fields.year') || '出版年'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.edition" :label="$t('fields.edition') || '版次'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.series" :label="$t('fields.series') || '叢書名'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.room" :label="$t('fields.room') || '館藏位置'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.vol" :label="$t('fields.vol') || '卷冊'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.copy" :label="$t('fields.copy') || '複本'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.price" :label="$t('fields.price') || '價格'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.lend" :label="$t('fields.lend') || '出借狀態'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.source" :label="$t('fields.source') || '來源'" outlined dense></v-text-field></v-col>
-												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.note" :label="$t('fields.note') || '備註'" outlined dense @keyup.enter="submitNewBook"></v-text-field></v-col>
+												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.tno" :label="$t('fields.tno') + ' *'" ref="newBookTnoField" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.book_name" :label="$t('fields.book_name') + ' *'" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.author" :label="$t('fields.author')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.cat" :label="$t('fields.cat')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.aumark" :label="$t('fields.aumark')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.publish" :label="$t('fields.publish')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.publish_place" :label="$t('fields.publish_place')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.year" :label="$t('fields.year')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.edition" :label="$t('fields.edition')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.series" :label="$t('fields.series')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="4"><v-text-field v-model="newBookForm.room" :label="$t('fields.room')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.vol" :label="$t('fields.vol')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.copy" :label="$t('fields.copy')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.price" :label="$t('fields.price')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="3"><v-text-field v-model="newBookForm.lend" :label="$t('fields.lend')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.source" :label="$t('fields.source')" outlined dense></v-text-field></v-col>
+												<v-col cols="12" sm="6"><v-text-field v-model="newBookForm.note" :label="$t('fields.note')" outlined dense @keyup.enter="submitNewBook"></v-text-field></v-col>
 										</v-row>
 								</v-form>
 						</v-card-text>
 						<v-card-actions class="pb-4 px-4">
 								<v-spacer></v-spacer>
 								<v-btn text color="grey darken-1" @click="closeNewBookDialog">{{ $t('close') }}</v-btn>
-								<v-btn color="primary" :loading="newBookLoading" @click="submitNewBook">{{ $t('submit') || '送出' }}</v-btn>
+								<v-btn color="primary" :loading="newBookLoading" @click="submitNewBook">{{ $t('submit') }}</v-btn>
 						</v-card-actions>
 				</v-card>
 		</v-dialog>
 
 		<v-dialog v-model="borrowHistoryDialog" max-width="400">
 			<v-card>
-					<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.borrowHistory') || '借閱歷史查詢' }}</v-card-title>
+					<v-card-title class="text-h6 blue-grey darken-3 white--text">{{ $t('menu.borrowHistory') }}</v-card-title>
 					<v-card-text class="pt-6">
 							<v-text-field
 									v-model="borrowHistoryStId"
-									:label="$t('fields.st_no') || '借書人學號'"
+									:label="$t('fields.st_no')"
 									prepend-icon="mdi-account-search"
 									outlined
 									dense
@@ -417,7 +417,7 @@
 					<v-card-actions class="pb-4 px-4">
 							<v-spacer></v-spacer>
 							<v-btn text color="grey darken-1" @click="borrowHistoryDialog = false">{{ $t('close') }}</v-btn>
-							<v-btn color="primary" @click="fetchBorrowHistory">{{ $t('search') || '查詢' }}</v-btn>
+							<v-btn color="primary" @click="fetchBorrowHistory">{{ $t('search') }}</v-btn>
 					</v-card-actions>
 			</v-card>
 		</v-dialog>
@@ -490,32 +490,32 @@
 				<v-card>
 						<v-card-title class="text-h6 blue-grey darken-3 white--text">
 								<v-icon dark class="mr-2">mdi-account-cog</v-icon>
-								{{ $t('studentManage.title') || '借書人帳號管理' }}
+								{{ $t('studentManage.title') }}
 						</v-card-title>
 						<v-card-text class="pt-6">
 								<v-row>
 										<v-col cols="8">
-												<v-text-field v-model="studentSearchId" :label="$t('fields.st_no') || '輸入學號查詢'" outlined dense @keyup.enter="fetchStudent" ref="studentSearchIdField"></v-text-field>
+												<v-text-field v-model="studentSearchId" :label="$t('studentManage.searchId')" outlined dense @keyup.enter="fetchStudent" ref="studentSearchIdField"></v-text-field>
 										</v-col>
 										<v-col cols="4">
-												<v-btn color="primary" block @click="fetchStudent"><v-icon left>mdi-magnify</v-icon>{{ $t('search') || '查詢' }}</v-btn>
+												<v-btn color="primary" block @click="fetchStudent"><v-icon left>mdi-magnify</v-icon>{{ $t('search') }}</v-btn>
 										</v-col>
 								</v-row>
 
 								<v-divider class="mb-4" v-if="studentFormVisible"></v-divider>
 
 								<v-form v-if="studentFormVisible">
-										<v-alert v-if="studentIsNew" type="info" dense text>{{ $t('studentManage.notFound') || '查無此帳號，您可以直接填寫下方資料來新增。' }}</v-alert>
+										<v-alert v-if="studentIsNew" type="info" dense text>{{ $t('studentManage.notFound') }}</v-alert>
 										<v-row dense>
-												<v-col cols="12" md="6"><v-text-field v-model="studentForm.st_no" :label="$t('fields.st_no') || '學號'" disabled outlined dense></v-text-field></v-col>
-												<v-col cols="12" md="6"><v-text-field v-model="studentForm.name" :label="$t('fields.name') || '姓名 (必填)'" outlined dense></v-text-field></v-col>
+												<v-col cols="12" md="6"><v-text-field v-model="studentForm.st_no" :label="$t('fields.st_no')" disabled outlined dense></v-text-field></v-col>
+												<v-col cols="12" md="6"><v-text-field v-model="studentForm.name" :label="$t('fields.nameRequired')" outlined dense></v-text-field></v-col>
 												<v-col cols="12" md="6">
 														<v-select
 																v-model="studentForm.identification"
 																:items="identityOptions"
 																item-text="text"
 																item-value="value"
-																:label="$t('fields.category') || '身分'"
+																:label="$t('fields.category')"
 																outlined
 																dense>
 														</v-select>
@@ -527,12 +527,12 @@
 								</v-form>
 						</v-card-text>
 						<v-card-actions class="pb-4 px-4 grey lighten-4" v-if="studentFormVisible">
-								<v-btn v-if="!studentIsNew" color="error" text @click="deleteStudent"><v-icon left>mdi-delete</v-icon>{{ $t('studentManage.delete') || '刪除帳號' }}</v-btn>
+								<v-btn v-if="!studentIsNew" color="error" text @click="deleteStudent"><v-icon left>mdi-delete</v-icon>{{ $t('studentManage.delete') }}</v-btn>
 								<v-spacer></v-spacer>
 								<v-btn text color="grey darken-1" @click="studentManageDialog = false">{{ $t('close') }}</v-btn>
 								<v-btn color="success" :loading="studentLoading" @click="saveStudent">
 										<v-icon left>mdi-content-save</v-icon>
-										{{ studentIsNew ? ($t('studentManage.createNew') || '新增帳號') : ($t('studentManage.update') || '更新儲存') }}
+										{{ studentIsNew ? $t('studentManage.createNew') : $t('studentManage.update') }}
 								</v-btn>
 						</v-card-actions>
 				</v-card>
@@ -582,7 +582,7 @@
 					<v-card-text class="pt-6">
 							<v-row>
 									<v-col cols="8">
-											<v-text-field v-model="adminSearchId" label="輸入工讀生帳號查詢" outlined dense @keyup.enter="fetchAdmin" ref="adminSearchIdField"></v-text-field>
+												<v-text-field v-model="adminSearchId" :label="$t('adminManage.searchId')" outlined dense @keyup.enter="fetchAdmin" ref="adminSearchIdField"></v-text-field>
 									</v-col>
 									<v-col cols="4">
 											<v-btn color="primary" block @click="fetchAdmin"><v-icon left>mdi-magnify</v-icon>{{ $t('search') }}</v-btn>
@@ -594,18 +594,18 @@
 							<v-form v-if="adminFormVisible">
 									<v-alert v-if="adminIsNew" type="info" dense text>{{ $t('adminManage.notFound') }}</v-alert>
 									<v-row dense>
-											<v-col cols="12" md="6"><v-text-field v-model="adminForm.id" label="帳號" disabled outlined dense></v-text-field></v-col>
-											<v-col cols="12" md="6"><v-text-field v-model="adminForm.nickname" label="暱稱" outlined dense></v-text-field></v-col>
+												<v-col cols="12" md="6"><v-text-field v-model="adminForm.id" :label="$t('fields.id')" disabled outlined dense></v-text-field></v-col>
+												<v-col cols="12" md="6"><v-text-field v-model="adminForm.nickname" :label="$t('fields.nickname')" outlined dense></v-text-field></v-col>
 											<v-col cols="12" md="6">
 													<v-select
 															v-model="adminForm.level"
 															:items="[0, 1, 2]"
-															label="權限等級"
+																	:label="$t('fields.level')"
 															outlined
 															dense>
 													</v-select>
 											</v-col>
-											<v-col cols="12" md="6"><v-text-field v-model="adminForm.password" label="新密碼 (新增或修改時必填)" outlined dense type="password"></v-text-field></v-col>
+												<v-col cols="12" md="6"><v-text-field v-model="adminForm.password" :label="$t('adminManage.passwordRequired')" outlined dense type="password"></v-text-field></v-col>
 									</v-row>
 							</v-form>
 					</v-card-text>

@@ -23,6 +23,13 @@ const messages = {
         confirmLogout: '您確定要登出系統管理嗎？',
         submit: '送出',
         search: '查詢',
+        auth: {
+            username: '帳號',
+            password: '密碼'
+        },
+        notifications: {
+            notifyOnReturn: '書籍歸還時通知我'
+        },
         borrowerId: '借書人代碼',
         borrowRegistrationSuccess: '登記成功！',
         borrowRegistrationFailed: '登記失敗',
@@ -53,9 +60,16 @@ const messages = {
             series: '叢書名',
             cat: '分類號',
             st_no: '借書人學號',
+            department: '系所',
+            email: '電子郵件',
+            phone_a: '聯絡電話',
+            id: '帳號',
+            nickname: '暱稱',
+            level: '權限等級',
             lend_time: '借出時間',
             giveback_time: '歸還時間',
             name: '姓名',
+            nameRequired: '姓名 (必填)',
             category: '分類',
             fines: '罰金統計',
             reason: '原因',
@@ -66,6 +80,7 @@ const messages = {
             vol: '卷冊',
             copy: '複本',
             price: '價格',
+            lend_privilege: '外借權限',
             lend: '出借狀態',
             source: '來源',
             note: '備註',
@@ -101,6 +116,7 @@ const messages = {
         },
         studentManage: {
             title: '借書人帳號管理',
+            searchId: '輸入學號查詢',
             createNew: '新增帳號',
             update: '更新儲存',
             delete: '刪除帳號',
@@ -109,6 +125,8 @@ const messages = {
         },
         adminManage: {
             title: '工讀生帳號管理',
+            searchId: '輸入工讀生帳號查詢',
+            passwordRequired: '新密碼 (新增或修改時必填)',
             createNew: '新增帳號',
             update: '更新儲存',
             delete: '刪除帳號',
@@ -137,7 +155,14 @@ const messages = {
             loginFailed: '登入失敗：',
             unknownError: '未知錯誤',
             wsUrlNotSet: '請先於 Console 設定 wsUrl！',
-            notReturned: '尚未歸還'
+            notReturned: '尚未歸還',
+            adminRequiredFields: '帳號與暱稱為必填欄位',
+            adminPasswordRequired: '新增帳號時必須設定密碼',
+            pushUnsupported: '您的瀏覽器不支援推播通知功能',
+            pushPermissionRequired: '需要開啟通知權限才能接收歸還通知',
+            pushSubscribeSuccess: '訂閱成功！當書籍歸還時，您將會收到瀏覽器通知。',
+            pushSubscribeFailed: '訂閱請求失敗，請稍後再試。',
+            pushUnexpectedError: '發生錯誤，無法完成訂閱。'
         },
         footer: {
             recommendation: '※ 本網頁建議下載使用開放標準的瀏覽器或親至系圖查詢使用。',
@@ -179,6 +204,13 @@ const messages = {
         confirmLogout: 'Are you sure you want to log out?',
         submit: 'Submit',
         search: 'Search',
+        auth: {
+            username: 'Username',
+            password: 'Password'
+        },
+        notifications: {
+            notifyOnReturn: 'Notify me when this book is returned'
+        },
         borrowerId: 'Borrower ID',
         borrowRegistrationSuccess: 'Registration successful!',
         borrowRegistrationFailed: 'Registration failed',
@@ -209,9 +241,16 @@ const messages = {
             series: 'Series',
             cat: 'Category',
             st_no: 'Student ID',
+            department: 'Department',
+            email: 'Email',
+            phone_a: 'Phone',
+            id: 'Account ID',
+            nickname: 'Nickname',
+            level: 'Permission Level',
             lend_time: 'Borrow Time',
             giveback_time: 'Return Time',
             name: 'Name',
+            nameRequired: 'Name (Required)',
             category: 'Category',
             fines: 'Fines',
             reason: 'Reason',
@@ -222,6 +261,7 @@ const messages = {
             vol: 'Volume',
             copy: 'Copy',
             price: 'Price',
+            lend_privilege: 'Lending Permission',
             lend: 'Lending Status',
             source: 'Source',
             note: 'Note',
@@ -257,6 +297,7 @@ const messages = {
         },
         studentManage: {
             title: 'Student Account Management',
+            searchId: 'Enter student ID to search',
             createNew: 'Create Account',
             update: 'Update & Save',
             delete: 'Delete Account',
@@ -265,6 +306,8 @@ const messages = {
         },
         adminManage: {
             title: 'Staff Account Management',
+            searchId: 'Enter staff account to search',
+            passwordRequired: 'New password (required when creating or updating)',
             createNew: 'Create Account',
             update: 'Update & Save',
             delete: 'Delete Account',
@@ -293,7 +336,14 @@ const messages = {
             loginFailed: 'Login failed: ',
             unknownError: 'Unknown error',
             wsUrlNotSet: 'Please set wsUrl in Console first!',
-            notReturned: 'Not Returned'
+            notReturned: 'Not Returned',
+            adminRequiredFields: 'Account ID and nickname are required fields',
+            adminPasswordRequired: 'Password is required when creating a new account',
+            pushUnsupported: 'Your browser does not support push notifications',
+            pushPermissionRequired: 'Notification permission is required to receive return alerts',
+            pushSubscribeSuccess: 'Subscribed successfully! You will receive a browser notification when the book is returned.',
+            pushSubscribeFailed: 'Subscription request failed. Please try again later.',
+            pushUnexpectedError: 'An error occurred and the subscription could not be completed.'
         },
         footer: {
             recommendation: '※ Recommended to use standard browsers or the library terminal.',
@@ -335,6 +385,13 @@ const messages = {
         confirmLogout: 'システムからログアウトしてもよろしいですか？',
         submit: '送信',
         search: '検索',
+        auth: {
+            username: 'アカウント',
+            password: 'パスワード'
+        },
+        notifications: {
+            notifyOnReturn: 'この本が返却されたら通知する'
+        },
         borrowerId: '借主ID',
         borrowRegistrationSuccess: '登録成功！',
         borrowRegistrationFailed: '登録に失敗しました',
@@ -365,9 +422,16 @@ const messages = {
             series: 'シリーズ名',
             cat: '分類番号',
             st_no: '学籍番号',
+            department: '所属',
+            email: 'メールアドレス',
+            phone_a: '電話番号',
+            id: 'アカウントID',
+            nickname: 'ニックネーム',
+            level: '権限レベル',
             lend_time: '貸出日時',
             giveback_time: '返却日時',
             name: '氏名',
+            nameRequired: '氏名 (必須)',
             category: '区分',
             fines: '罰金',
             reason: '理由',
@@ -378,6 +442,7 @@ const messages = {
             vol: '巻次',
             copy: '複本',
             price: '価格',
+            lend_privilege: '貸出権限',
             lend: '貸出状況',
             source: '入手元',
             note: '注記',
@@ -413,6 +478,7 @@ const messages = {
         },
         studentManage: {
             title: '借主アカウント管理',
+            searchId: '学籍番号で検索',
             createNew: 'アカウント作成',
             update: '更新して保存',
             delete: 'アカウント削除',
@@ -421,6 +487,8 @@ const messages = {
         },
         adminManage: {
             title: 'スタッフアカウント管理',
+            searchId: 'スタッフアカウントを入力して検索',
+            passwordRequired: '新しいパスワード (新規作成・更新時は必須)',
             createNew: 'アカウント作成',
             update: '更新して保存',
             delete: 'アカウント削除',
@@ -449,7 +517,14 @@ const messages = {
             loginFailed: 'ログイン失敗：',
             unknownError: '不明なエラー',
             wsUrlNotSet: 'まずコンソールで wsUrl を設定してください！',
-            notReturned: '未返却'
+            notReturned: '未返却',
+            adminRequiredFields: 'アカウントIDとニックネームは必須項目です',
+            adminPasswordRequired: '新規アカウント作成時はパスワードの設定が必要です',
+            pushUnsupported: 'お使いのブラウザはプッシュ通知に対応していません',
+            pushPermissionRequired: '返却通知を受け取るには通知権限が必要です',
+            pushSubscribeSuccess: '購読に成功しました。本が返却されるとブラウザ通知を受け取れます。',
+            pushSubscribeFailed: '購読リクエストに失敗しました。しばらくしてからもう一度お試しください。',
+            pushUnexpectedError: 'エラーが発生し、購読を完了できませんでした。'
         },
         footer: {
             recommendation: '※ 本サイトは標準ブラウザを利用するか、図書室の端末をご利用ください。',
