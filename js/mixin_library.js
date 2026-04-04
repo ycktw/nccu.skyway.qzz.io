@@ -301,28 +301,53 @@ const libraryMixin = {
     // ==========================================
     // Web Push 推播通知相關邏輯
     // ==========================================
-    async subscribeToNotification(tno) {
+		async subscribeToNotification(tno) {
         if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
             alert('您的瀏覽器不支援推播通知功能');
             return;
         }
 
         try {
-            const permission = await Notification.requestPermission();
-            if (permission !== 'granted') {
-                alert('需要開啟通知權限才能接收歸還通知');
-                return;
+            // 1. 檢查與要求權限 (如果已經允許過，就不會再彈窗)
+            if (Notification.permission !== 'granted') {
+                const permission = await Notification.requestPermission();
+                if (permission !== 'granted') {
+                    alert('需要開啟通知權限才能接收歸還通知');
+                    return;
+                }
             }
 
+            // 🟢 核心解法：等待焦點機制
+            // 如果剛點完允許，焦點還在瀏覽器 UI 上，我們稍微等一下讓焦點回到網頁
+            if (!document.hasFocus()) {
+                console.log("等待網頁取得焦點...");
+                await new Promise(resolve => {
+                    const focusHandler = () => {
+                        window.removeEventListener('focus', focusHandler);
+                        resolve();
+                    };
+                    window.addEventListener('focus', focusHandler);
+
+                    // 加上 500ms 的 Timeout 兜底，避免某些極端情況卡死
+                    setTimeout(() => {
+                        window.removeEventListener('focus', focusHandler);
+                        resolve();
+                    }, 500);
+                });
+            }
+
+            // 2. 註冊 Service Worker (使用你更新的 js/sw.js 路徑)
             const registration = await navigator.serviceWorker.register('js/sw.js');
 
-            // 稍後在 Go 後端產生這把金鑰後，將它填入這裡
-            const vapidPublicKey = "BBBRXBftZ5WkgwVlZgRQKIsg_KFV3jKT13zytc40eGydIGkgETncHe5QLwG-mKgJI6iIYlyi0POQgF-wptyb-fU"
+            // ⚠️ 記得把這裡換回你用 Go 產生的真正 Public Key！
+            const vapidPublicKey = '這裡換成後端產生的_Base64_公鑰';
+
             const subscription = await registration.pushManager.subscribe({
                 userVisibleOnly: true,
                 applicationServerKey: this.urlBase64ToUint8Array(vapidPublicKey)
             });
 
+            // 3. 呼叫後端 API 儲存訂閱
             const baseWsUrl = localStorage.getItem("wsUrl") || "wss://5517-60-248-186-181.ngrok-free.app/ws";
             const apiUrl = baseWsUrl.replace('wss://', 'https://').replace('ws://', 'http://').replace('/ws', '/api/subscribe_notification');
 
