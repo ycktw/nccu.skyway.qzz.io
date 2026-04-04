@@ -238,10 +238,13 @@ const libraryMixin = {
         }
     },
 
-    updateBookStatusUI(data) {
+		updateBookStatusUI(data) {
         if (!data) return;
 
-        this.$set(this.selectedBook, 'real_lendable', data.is_lendable ? this.$t('status.lendable') : this.$t('status.notLendable'));
+        // 🟢 嚴格判斷：確保只有真正代表「可借」的值才會通過，強制過濾掉字串 "0" 或 false
+        const isLendable = (data.is_lendable === true || data.is_lendable === 1 || data.is_lendable === '1' || data.is_lendable === 'true');
+
+        this.$set(this.selectedBook, 'real_lendable', isLendable ? this.$t('status.lendable') : this.$t('status.notLendable'));
 
         if (data.is_borrowed) {
             this.$set(this.selectedBook, 'real_status', this.$t('status.borrowed'));
@@ -250,6 +253,7 @@ const libraryMixin = {
             }
         } else {
             this.$set(this.selectedBook, 'real_status', this.$t('status.available'));
+            // 如果從外借狀態變回在館內，要清空預期歸還日
             if (this.selectedBook.expected_return) {
                 this.$delete(this.selectedBook, 'expected_return');
             }
