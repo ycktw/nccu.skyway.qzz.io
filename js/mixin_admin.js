@@ -82,6 +82,10 @@ const adminMixin = {
     },
   },
   methods: {
+        formatDateOnly(value) {
+            if (!value) return value;
+            return String(value).split('T')[0].split(' ')[0];
+        },
     openBorrowDialog() {
       this.borrowAlert.show = false;
       this.borrowForm = { tno: '', stid: '' };
@@ -263,11 +267,11 @@ const adminMixin = {
                     if (!book.giveback_time || book.giveback_time.includes('1970-01-01') || book.giveback_time.includes('0001-01-01') || book.giveback_time === '0000-00-00 00:00:00') {
                         book.giveback_time = this.$t('alerts.notReturned');
                     }
-                    if (book.lend_time && book.lend_time.includes('T')) {
-                        book.lend_time = book.lend_time.replace('T', ' ').substring(0, 19);
+                    if (book.lend_time) {
+                        book.lend_time = this.formatDateOnly(book.lend_time);
                     }
-                    if (book.giveback_time && book.giveback_time !== this.$t('alerts.notReturned') && book.giveback_time.includes('T')) {
-                        book.giveback_time = book.giveback_time.replace('T', ' ').substring(0, 19);
+                    if (book.giveback_time && book.giveback_time !== this.$t('alerts.notReturned')) {
+                        book.giveback_time = this.formatDateOnly(book.giveback_time);
                     }
                 });
 
@@ -450,11 +454,11 @@ const adminMixin = {
                     if (!book.giveback_time || book.giveback_time.includes('1970-01-01') || book.giveback_time.includes('0001-01-01') || book.giveback_time === '0000-00-00 00:00:00') {
                         book.giveback_time = this.$t('alerts.notReturned');
                     }
-                    if (book.lend_time && book.lend_time.includes('T')) {
-                        book.lend_time = book.lend_time.replace('T', ' ').substring(0, 19);
+                    if (book.lend_time) {
+                        book.lend_time = this.formatDateOnly(book.lend_time);
                     }
-                    if (book.giveback_time && book.giveback_time !== this.$t('alerts.notReturned') && book.giveback_time.includes('T')) {
-                        book.giveback_time = book.giveback_time.replace('T', ' ').substring(0, 19);
+                    if (book.giveback_time && book.giveback_time !== this.$t('alerts.notReturned')) {
+                        book.giveback_time = this.formatDateOnly(book.giveback_time);
                     }
                 });
                 
