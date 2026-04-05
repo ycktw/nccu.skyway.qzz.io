@@ -170,11 +170,21 @@ const messages = {
             pushPermissionRequired: '需要開啟通知權限才能接收歸還通知',
             pushSubscribeSuccess: '訂閱成功！當書籍歸還時，您將會收到瀏覽器通知。',
             pushSubscribeFailed: '訂閱請求失敗，請稍後再試。',
-            pushUnexpectedError: '發生錯誤，無法完成訂閱。'
+            pushUnexpectedError: '發生錯誤，無法完成訂閱。',
+            feedbackEmpty: '請先輸入回饋內容',
+            feedbackSuccess: '回饋已送出，感謝您的意見！',
+            feedbackFailed: '回饋送出失敗，請稍後再試。'
+        },
+        feedback: {
+            title: '意見回饋',
+            inputLabel: '回饋內容',
+            inputPlaceholder: '請輸入您想回報的問題或建議...',
+            hint: '送出後會傳到 /api/feedback，供管理端即時查看。'
         },
         footer: {
             recommendation: '※ 本網頁建議下載使用開放標準的瀏覽器或親至系圖查詢使用。',
-            copyright: 'Copyright Reserved by NCCU History Department 2026'
+            copyright: 'Copyright Reserved by NCCU History Department 2026',
+            feedbackLink: '點我提供回饋'
         },
 				status: {
             lendable: '可外借',
@@ -360,11 +370,21 @@ const messages = {
             pushPermissionRequired: 'Notification permission is required to receive return alerts',
             pushSubscribeSuccess: 'Subscribed successfully! You will receive a browser notification when the book is returned.',
             pushSubscribeFailed: 'Subscription request failed. Please try again later.',
-            pushUnexpectedError: 'An error occurred and the subscription could not be completed.'
+            pushUnexpectedError: 'An error occurred and the subscription could not be completed.',
+            feedbackEmpty: 'Please enter your feedback first.',
+            feedbackSuccess: 'Feedback sent. Thank you!',
+            feedbackFailed: 'Failed to send feedback. Please try again later.'
+        },
+        feedback: {
+            title: 'Feedback',
+            inputLabel: 'Your message',
+            inputPlaceholder: 'Type your issue report or suggestion...',
+            hint: 'This will be posted to /api/feedback for real-time review.'
         },
         footer: {
             recommendation: '※ Recommended to use standard browsers or the library terminal.',
-            copyright: 'Copyright Reserved by NCCU History Department 2026'
+            copyright: 'Copyright Reserved by NCCU History Department 2026',
+            feedbackLink: 'Send feedback'
         },
 				status: {
             lendable: 'Lendable',
@@ -550,11 +570,21 @@ const messages = {
             pushPermissionRequired: '返却通知を受け取るには通知権限が必要です',
             pushSubscribeSuccess: '購読に成功しました。本が返却されるとブラウザ通知を受け取れます。',
             pushSubscribeFailed: '購読リクエストに失敗しました。しばらくしてからもう一度お試しください。',
-            pushUnexpectedError: 'エラーが発生し、購読を完了できませんでした。'
+            pushUnexpectedError: 'エラーが発生し、購読を完了できませんでした。',
+            feedbackEmpty: 'フィードバック内容を入力してください。',
+            feedbackSuccess: 'フィードバックを送信しました。ありがとうございます。',
+            feedbackFailed: 'フィードバックの送信に失敗しました。しばらくしてから再試行してください。'
+        },
+        feedback: {
+            title: 'フィードバック',
+            inputLabel: '内容',
+            inputPlaceholder: '不具合報告やご意見を入力してください...',
+            hint: '/api/feedback に送信され、管理側で即時確認できます。'
         },
         footer: {
             recommendation: '※ 本サイトは標準ブラウザを利用するか、図書室の端末をご利用ください。',
-            copyright: 'Copyright Reserved by NCCU History Department 2026'
+            copyright: 'Copyright Reserved by NCCU History Department 2026',
+            feedbackLink: 'フィードバックを送る'
         },
 				status: {
             lendable: '貸出可',

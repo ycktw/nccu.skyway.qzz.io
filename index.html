@@ -630,10 +630,42 @@
 					</v-card-actions>
 			</v-card>
 		</v-dialog>
+
+		<v-dialog v-model="feedbackDialog" max-width="560" @click:outside="closeAllDialogs" @keydown.esc="closeAllDialogs">
+			<v-card>
+				<v-card-title class="text-h6 blue-grey darken-3 white--text">
+					<v-icon dark class="mr-2">mdi-message-text-outline</v-icon>
+					{{ $t('feedback.title') }}
+				</v-card-title>
+				<v-card-text class="pt-6">
+					<v-textarea
+						v-model="feedbackMessage"
+						:label="$t('feedback.inputLabel')"
+						:placeholder="$t('feedback.inputPlaceholder')"
+						auto-grow
+						rows="4"
+						counter="1000"
+						outlined
+						dense
+					></v-textarea>
+					<div class="text-caption grey--text text--darken-1">
+						{{ $t('feedback.hint') }}
+					</div>
+				</v-card-text>
+				<v-card-actions class="pb-4 px-4 grey lighten-4">
+					<v-spacer></v-spacer>
+					<v-btn text color="grey darken-1" @click="closeFeedbackDialog">{{ $t('close') }}</v-btn>
+					<v-btn color="primary" :loading="feedbackSending" @click="submitFeedback">
+						<v-icon left>mdi-send</v-icon>{{ $t('submit') }}
+					</v-btn>
+				</v-card-actions>
+			</v-card>
+		</v-dialog>
 		<v-footer color="transparent" class="justify-center mt-8 mb-4" padless>
 			<div class="text-center text-caption grey--text text--darken-1" style="line-height: 1.8;">
 				{{ $t('footer.recommendation') }}<br/>
 				{{ $t('footer.copyright') }}<br/>
+				<span class="pointer-link" @click="openFeedbackDialog">{{ $t('footer.feedbackLink') }}</span><br/>
 				Git: {{ gitHash }} | Deploy: {{ deployTime }}
 			</div>
 		</v-footer>
