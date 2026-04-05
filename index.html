@@ -2,13 +2,14 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>政大歷史系圖書查詢系統</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 		<link rel="manifest" href="manifest.json">
+		<link rel="apple-touch-icon" href="favicon.ico">
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
@@ -36,6 +37,16 @@
 			}
 			.pointer-link:hover {
 					text-decoration-color: currentColor;
+			}
+			.footer-meta {
+					line-height: 1.8;
+			}
+			.footer-feedback-trigger {
+					border: 0;
+					padding: 0;
+					background: transparent;
+					color: inherit;
+					font: inherit;
 			}
 			.v-data-table tbody tr {
 					cursor: pointer;
@@ -662,11 +673,18 @@
 			</v-card>
 		</v-dialog>
 		<v-footer color="transparent" class="justify-center mt-8 mb-4" padless>
-			<div class="text-center text-caption grey--text text--darken-1" style="line-height: 1.8;">
+			<div class="text-center text-caption grey--text text--darken-1 footer-meta">
 				{{ $t('footer.recommendation') }}<br/>
 				{{ $t('footer.copyright') }}<br/>
-				<span class="pointer-link" @click="openFeedbackDialog">{{ $t('footer.feedbackLink') }}</span><br/>
-				Git: {{ gitHash }} | Deploy: {{ deployTime }}
+				<button
+					type="button"
+					class="pointer-link footer-feedback-trigger"
+					@click="openFeedbackDialog"
+					:title="$t('footer.feedbackLink')"
+					:aria-label="$t('footer.feedbackLink')"
+				>
+					Git: {{ gitHash }} | Deploy: {{ deployTime }}
+				</button><br/>
 			</div>
 		</v-footer>
 	</v-app>
