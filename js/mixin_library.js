@@ -212,8 +212,7 @@ const libraryMixin = {
 
             this.ws.send(JSON.stringify(request));
         } else {
-            const defaultUrl = "wss://5517-60-248-186-181.ngrok-free.app/ws";
-            const baseWsUrl = localStorage.getItem("wsUrl") || defaultUrl;
+            const baseWsUrl = defaultUrl;
             const apiUrl = baseWsUrl.replace('wss://', 'https://').replace('ws://', 'http://').replace('/ws', '/api/book_status');
 
             try {
@@ -348,7 +347,7 @@ const libraryMixin = {
             });
 
             // 3. 呼叫後端 API 儲存訂閱
-            const baseWsUrl = localStorage.getItem("wsUrl") || "wss://5517-60-248-186-181.ngrok-free.app/ws";
+            const baseWsUrl = defaultUrl;
             const apiUrl = baseWsUrl.replace('wss://', 'https://').replace('ws://', 'http://').replace('/ws', '/api/subscribe_notification');
 
             const response = await fetch(apiUrl, {

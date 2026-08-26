@@ -1,5 +1,3 @@
-const defaultUrl = "wss://5517-60-248-186-181.ngrok-free.app/ws";
-
 const authMixin = {
   data() {
     return {
@@ -41,7 +39,7 @@ const authMixin = {
       if (!this.loginForm.username || !this.loginForm.password) return;
       this.isLoggingIn = true;
 
-      const baseWsUrl = localStorage.getItem("wsUrl") || defaultUrl;
+      const baseWsUrl = defaultUrl;
       if (!baseWsUrl) {
         alert(this.$t('alerts.wsUrlNotSet'));
         this.isLoggingIn = false;
@@ -141,7 +139,7 @@ const authMixin = {
     },
     initSecureWebSocket() {
       // 加上 || 預設值的判斷
-      const baseUrl = localStorage.getItem("wsUrl") || defaultUrl;
+      const baseUrl = defaultUrl;
       const wsUrl = `${baseUrl}?token=${this.jwtToken}`;
 
       try {

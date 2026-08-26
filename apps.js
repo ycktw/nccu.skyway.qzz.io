@@ -58,7 +58,7 @@ window.app = new Vue({
                 return;
             }
 
-            const baseWsUrl = localStorage.getItem('wsUrl') || 'wss://5517-60-248-186-181.ngrok-free.app/ws';
+            const baseWsUrl = defaultUrl;
             const apiUrl = baseWsUrl.replace('wss://', 'https://').replace('ws://', 'http://').replace('/ws', '/api/feedback');
 
             const headers = {
@@ -121,7 +121,7 @@ window.app = new Vue({
                                                             this.opendayDialog || this.studentManageDialog ||
                                                             this.editBookDialog || this.adminManageDialog ||
                                                             this.feedbackDialog;
-																	
+
 						const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
             const isUserTyping = activeTag === 'input' || activeTag === 'textarea';
 
